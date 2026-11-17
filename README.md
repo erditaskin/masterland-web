@@ -2,7 +2,7 @@
 
 Static Turkish and English landing, privacy, support and account deletion pages.
 
-Netlify publish directory: `public`. No build command or environment variables are required.
+Public directory: `public`. No framework, build command or runtime environment variables are required. The current host is the dedicated Masterland VPS at `142.93.88.194`, served through Nginx and Cloudflare. Netlify is the previous host; its configuration is retained only as a rollback reference.
 
 Preview locally: `python3 -m http.server 8765 --directory public`.
 
@@ -11,3 +11,5 @@ The content is a draft. Complete and review privacy disclosures, retention perio
 ## World atlas
 
 `/atlas/` hosts the self-contained Turkish and English city, production-chain and mastery design atlas. New content is marked as a proposal in the interface.
+
+`deploy/masterland-web-deploy` activates versioned `/opt/masterland/web/RELEASE/public` releases through an atomic `current` symlink, checks the privacy route, and restores the previous release on failure. `rollback` restores the retained prior version. Deployment notifications use only the server-side Masterland Slack webhook. TLS, firewall and database operations belong to `masterland-api/deploy`; web deployment does not alter them. Preserve all legal/support/app-ads.txt routes.

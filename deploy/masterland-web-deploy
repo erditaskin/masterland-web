@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+set -euo pipefail
+ROOT=/opt/masterland/web
+exec 9>/opt/masterland/deploy.lock
+flock -n 9 || { echo 'Another Masterland deployment is active'; exit 1; }
+action="${1:-status}"
+release="${2:-}"
+notify() {
+  python3 - "$1" "$release" <<'PY'
+import json,sys,urllib.request
+from pathlib import Path
+p=Path('/opt/masterland/env/slack.env')
+if not p.exists(): raise SystemExit(0)
+url=p.read_text().strip().removeprefix('SLACK_WEBHOOK_URL=').strip()
+if not url.startswith('https://hooks.slack.com/services/'): raise SystemExit(1)
+try:
+ data=json.dumps({'text':f'Masterland web | production | {sys.argv[1]} | commit {sys.argv[2]}'}).encode()
+ with urllib.request.urlopen(urllib.request.Request(url,data=data,headers={'Content-Type':'application/json'}),timeout=10) as r: r.read()
+except Exception: print('Slack web deployment notification could not be delivered',file=sys.stderr)
+PY
+}
+activate() {
+  local target="$ROOT/$release" old
+  for file in index.html privacy/index.html delete-account/index.html support/index.html app-ads.txt; do test -s "$target/public/$file"; done
+  test -s "$target/nginx-security.conf"
+  old="$(readlink -f "$ROOT/current")"
+  ln -sfn "$target" "$ROOT/current"
+  if ! nginx -t || ! systemctl reload nginx || ! curl -fsS --max-time 5 --resolve masterland.app:443:127.0.0.1 https://masterland.app/privacy/ >/dev/null; then
+    ln -sfn "$old" "$ROOT/current"
+    nginx -t && systemctl reload nginx
+    notify 'FAILED; previous web release restored'
+    return 1
+  fi
+  if [[ "$old" != "$target" ]]; then ln -sfn "$old" "$ROOT/previous"; fi
+  notify 'SUCCESS'
+  echo "Masterland web active: $release"
+}
+case "$action" in
+  activate) [[ "$release" =~ ^[a-zA-Z0-9._-]{8,80}$ ]] || exit 2; activate ;;
+  rollback) release="$(basename "$(readlink -f "$ROOT/previous")")"; activate ;;
+  status) readlink -f "$ROOT/current" ;;
+  *) echo 'Usage: masterland-web-deploy activate RELEASE | rollback | status'; exit 2 ;;
+esac
