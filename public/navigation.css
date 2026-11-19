@@ -1,6 +1,6 @@
-@import url("/assets/fonts/type.css");
+@import url("/assets/fonts/illustrated.css");
 
-:root { --site-header-height: 60px; --site-font: "Source Sans 3", system-ui, sans-serif; --display-font: "Source Serif 4", Georgia, serif; }
+:root { --site-header-height: 60px; --site-font: "IBM Plex Serif", Georgia, serif; --display-font: "Jim Nightshade", Georgia, serif; }
 body, button, input, select, textarea, code, pre { font-family: var(--site-font); }
 html { scroll-padding-top: calc(var(--site-header-height) + 12px); }
 .site-header, .site-footer { box-sizing: border-box; max-width: none; margin: 0; padding: 0; color: #243a34; font: 14px/1.35 var(--site-font); }
@@ -35,3 +35,9 @@ html { scroll-padding-top: calc(var(--site-header-height) + 12px); }
   .site-footer small { margin: 0; }
 }
 @media print { .site-header, .site-footer { display: none; } }
+
+.illustrated-site .site-header { color: #fff0c8; background: #102f27ed; border-color: #d2a35970; }
+.illustrated-site .site-header-inner { max-width: none; }
+.illustrated-site .site-nav a:hover, .illustrated-site .site-nav a[aria-current] { color: #fff6d6; background: #94743c65; }
+.illustrated-site .site-languages [aria-pressed="true"] { color: #2e240f; background: #f4cf7e; border-color: #f4cf7e; }
+.illustrated-site .site-brand { color: #ffe1a0; }

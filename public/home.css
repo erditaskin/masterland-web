@@ -109,3 +109,37 @@
 @media (min-width: 561px) {
  .marketing-hero .home-splash { position: absolute; inset: 0 0 0 auto; width: 39.2%; max-height: none; }
 }
+
+.marketing { max-width: none; padding: 0 0 40px; }
+.marketing .marketing-hero {
+  display: flex; align-items: center; min-height: clamp(490px, 77svh, 840px);
+  border: 0; border-radius: 0; box-shadow: none;
+  background: linear-gradient(90deg, #071f15d9 0%, #0b281c8c 30%, transparent 68%), url("/assets/game/home-illustrated.webp") center / cover no-repeat, #15382d;
+}
+.marketing-hero .home-intro { width: min(700px, 62%); padding: clamp(28px, 5vw, 95px); }
+.marketing-hero h1 { font: 400 clamp(56px, 6.65vw, 118px)/.94 var(--display-font); letter-spacing: 0; text-wrap: initial; color: #fff1c9; text-shadow: 0 3px 16px #13210f9e; }
+.marketing-hero .home-kicker { letter-spacing: 0; }
+.marketing-hero .home-actions a { font-size: 15px; }
+.marketing .home-section { width: min(100% - 32px, 1100px); margin-inline: auto; }
+.marketing .marketing-cities { margin-top: 30px; }
+.marketing .home-section h2 { font-weight: 400; font-size: clamp(35px, 4vw, 59px); }
+.marketing .marketing-cities .home-section-heading { align-items: center; }
+.marketing .marketing-cities img { height: clamp(90px, 13vw, 155px); }
+@media (max-width: 650px) {
+ .marketing .marketing-hero { min-height: 570px; align-items: end; background-position: center, 60% center; }
+ .marketing .marketing-hero { background-image: linear-gradient(0deg,#0b2419fa 0%,#0c271aca 38%,transparent 82%),url("/assets/game/home-illustrated.webp"); }
+ .marketing-hero .home-intro { width: 100%; padding: 24px 19px 34px; }
+ .marketing-hero h1 { font-size: clamp(49px, 11vw, 72px); }
+}
+.marketing .marketing-hero::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 67% 13%, #ffefab25, transparent 45%);
+  animation: meadow-light 12s ease-in-out infinite alternate;
+}
+.marketing-hero .home-intro { position: relative; z-index: 1; }
+@keyframes meadow-light { from { opacity: .26; } to { opacity: .82; } }
+@media (prefers-reduced-motion: reduce) { .marketing .marketing-hero::after { animation: none; } }
+
+@media (min-width: 1673px), (min-width: 900px) and (min-resolution: 1.5dppx) {
+ .marketing .marketing-hero { background-image: linear-gradient(90deg, #071f15d9 0%, #0b281c8c 30%, transparent 68%), url("/assets/game/home-illustrated-2x.webp"); }
+}

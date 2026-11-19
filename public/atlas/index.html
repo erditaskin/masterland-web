@@ -8,11 +8,11 @@
 <title>World Atlas · Masterland</title>
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-<link rel="stylesheet" href="/navigation.css?v=20261119-player">
+<link rel="stylesheet" href="/navigation.css?v=illustrated">
 <link rel="stylesheet" href="/atlas/game-art.css?v=20261119-player">
-<link rel="stylesheet" href="/atlas/player.css">
+<link rel="stylesheet" href="/atlas/player.css?v=regional-detail">
 </head>
-<body class="atlas-site">
+<body class="atlas-site illustrated-site">
 <!-- site:header -->
 <header class="site-header">
 <div class="site-header-inner">
@@ -30,28 +30,36 @@
 </header>
 <!-- /site:header -->
 <main class="player-atlas">
- <div class="atlas-intro">
-  <h1 data-tr="Masterland Atlası" data-en="Masterland World Atlas">Masterland World Atlas</h1>
-  <p data-tr="Haritadan bir şehir seç. Üretim zincirlerini ve kazanabileceğin ustalık unvanlarını keşfet." data-en="Choose a city on the map to discover its production chains and mastery titles.">Choose a city on the map to discover its production chains and mastery titles.</p>
- </div>
  <section class="atlas-overview" aria-label="Masterland">
-  <div class="atlas-map">
-   <img src="/assets/game/world-map.webp" alt="" width="833" height="1250" fetchpriority="high">
-   <div id="map-pins" role="group" aria-label="City markers"></div>
-   <p id="map-notice" hidden></p>
+  <div class="atlas-map" id="atlas-viewport">
+   <div id="atlas-world">
+    <img src="/assets/game/atlas-illustrated.webp" srcset="/assets/game/atlas-illustrated.webp 1672w, /assets/game/atlas-illustrated-2x.webp 3344w" sizes="100vw" width="1672" height="941" alt="" fetchpriority="high" draggable="false">
+    <div id="atlas-detail-tiles" aria-hidden="true"></div>
+    <div id="map-pins" role="group" aria-label="City markers"></div>
+   </div>
   </div>
-  <div class="atlas-directory">
-   <label data-tr="Şehir veya ürün ara" data-en="Find a city or item" for="atlas-search">Find a city or item</label>
-   <input id="atlas-search" type="search" autocomplete="off">
-   <p id="atlas-status" role="status" aria-live="polite"></p>
-   <div id="city-directory"></div>
+  <div class="atlas-map-heading">
+   <h1 data-tr="Dünya Atlası" data-en="World Atlas">World Atlas</h1>
+   <details class="atlas-directory">
+    <summary data-tr="Şehirler" data-en="Cities">Cities</summary>
+    <label data-tr="Şehir veya ürün ara" data-en="Find a city or item" for="atlas-search">Find a city or item</label>
+    <input id="atlas-search" type="search" autocomplete="off">
+    <div id="city-directory"></div>
+   </details>
   </div>
+  <div class="atlas-zoom">
+   <button type="button" id="zoom-in" aria-label="Zoom in">+</button>
+   <button type="button" id="zoom-out" aria-label="Zoom out">−</button>
+   <button type="button" id="zoom-reset" data-tr="Haritayı göster" data-en="Show map">Show map</button>
+  </div>
+  <p id="map-notice" role="status" hidden></p>
+  <aside class="atlas-selection" id="atlas-selection"></aside>
  </section>
  <section id="city-detail" aria-labelledby="city-heading"></section>
 </main>
 <script src="/language.js?v=20261119"></script>
-<script src="/atlas/catalog.js"></script>
+<script src="/atlas/catalog.js?v=illustrated"></script>
 <script src="/atlas/game-art.js?v=20261119-player"></script>
-<script src="/atlas/player.js"></script>
+<script src="/atlas/player.js?v=regional-detail"></script>
 </body>
 </html>
