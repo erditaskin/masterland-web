@@ -1,10 +1,12 @@
-:root { --site-header-height: 60px; --site-font: Georgia, "Times New Roman", serif; }
+@import url("/assets/fonts/type.css");
+
+:root { --site-header-height: 60px; --site-font: "Source Sans 3", system-ui, sans-serif; --display-font: "Source Serif 4", Georgia, serif; }
 body, button, input, select, textarea, code, pre { font-family: var(--site-font); }
 html { scroll-padding-top: calc(var(--site-header-height) + 12px); }
 .site-header, .site-footer { box-sizing: border-box; max-width: none; margin: 0; padding: 0; color: #243a34; font: 14px/1.35 var(--site-font); }
 .site-header { position: sticky; inset-block-start: 0; z-index: 22; background: #faf5e9; border-bottom: 1px solid #ded4bf; }
 .site-header-inner, .site-footer-inner { max-width: 1100px; margin-inline: auto; padding-inline: 22px; display: flex; align-items: center; gap: 18px; }
-.site-header-inner { min-height: calc(var(--site-header-height) - 1px); }
+.site-header-inner { width: 100%; min-height: calc(var(--site-header-height) - 1px); }
 .site-brand, .site-nav a, .site-footer-nav a { color: inherit; text-decoration: none; }
 .site-brand { display: inline-flex; align-items: center; gap: 8px; flex: none; font-weight: 790; }
 .site-brand img { display: block; border-radius: 7px; }

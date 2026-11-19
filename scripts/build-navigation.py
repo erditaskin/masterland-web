@@ -12,8 +12,7 @@ ROUTES = [
     ("/support/", "Destek", "Support"),
     ("/privacy/", "Gizlilik", "Privacy"),
 ]
-FOOTER_ROUTES = [*ROUTES, ("/atlas/tree/", "İçerik ağacı", "Content tree"),
-                 ("/delete-account/", "Hesap silme", "Delete account")]
+FOOTER_ROUTES = [*ROUTES, ("/delete-account/", "Hesap silme", "Delete account")]
 
 
 def links(routes, current):

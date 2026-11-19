@@ -18,3 +18,7 @@ The shared header and footer are generated from `scripts/build-navigation.py`. R
 `python3 scripts/build-navigation.py` after editing site navigation and
 `python3 scripts/build-navigation.py --check` before deploying. The home page is
 `/`; the bilingual game guide is `/game/`.
+
+The public Atlas shows city guides and the interactive map. The old content and
+artwork tree is archived in `reference/atlas-tree.html`, outside the deployed
+`public/` directory.
