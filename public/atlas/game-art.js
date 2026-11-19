@@ -1,6 +1,6 @@
 const atlasArt = {
   status(city, lang) {
-    const active = city.release === "playable";
+    const active = city.release === "inGame";
     return lang === "tr"
       ? (active ? "Oyunda" : "Yakında")
       : (active ? "In game" : "Coming soon");

@@ -1,5 +1,4 @@
 .game-page { background: #f6f1e5; }
-.game-page > header { padding-block: 16px; }
 .game-page > footer { margin-top: 24px; }
 .home { padding-block: 22px 12px; }
 
@@ -51,7 +50,6 @@
   .home-screens img { width: min(100%, 144px); margin-inline: auto; }
 }
 @media (max-width: 560px) {
-  .game-page > header { gap: 10px; }
   .home { padding-block: 15px 8px; }
   .home-hero { grid-template-columns: 1fr; min-height: 0; }
   .home-splash { order: -1; height: clamp(305px, 85vw, 385px); max-height: none; object-position: center 22%; border-left: 0; border-bottom: 1px solid #c29f60; }
@@ -63,3 +61,14 @@
   .home-screens article { grid-template-columns: 78px minmax(0, 1fr); align-items: center; padding: 10px; gap: 15px; }
   .home-cities ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+.home-entry { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.home-entry article, .game-intro, .game-ranking { padding: 18px; background: #fffbf0; border: 1px solid #ded3bc; border-radius: 14px; }
+.home-entry a, .game-intro a { display: inline-block; margin-top: 8px; font-weight: 650; }
+.game-intro { border-top: 3px solid #ae894b; }
+.game-intro h1 { margin: 0 0 8px; color: #243a34; font-size: clamp(32px, 5vw, 57px); letter-spacing: -.04em; }
+.game-intro p, .home-cities > p { max-width: 70ch; margin: 0; line-height: 1.55; }
+.home-cities > p { margin-block: 0 12px; }
+.home-cities .city-specialties { color: #305d4d; font-weight: 650; }
+.game-ranking h2 { margin-bottom: 3px; }
+@media (max-width: 560px) { .home-entry { grid-template-columns: 1fr; } }
