@@ -57,7 +57,10 @@ def main():
         route = "/" if relative == Path(".") else f"/{relative.as_posix()}/"
         old = page.read_text()
         new = old
-        for region, block in (("header", header(route)), ("footer", footer(route))):
+        regions = [("header", header(route))]
+        if not route.startswith("/atlas/"):
+            regions.append(("footer", footer(route)))
+        for region, block in regions:
             start, end = f"<!-- site:{region} -->", f"<!-- /site:{region} -->"
             new, count = re.subn(f"{start}.*?{end}", lambda _: f"{start}\n{block}\n{end}", new, flags=re.S)
             if count != 1:

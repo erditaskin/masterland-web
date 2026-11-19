@@ -18,6 +18,7 @@ html { scroll-padding-top: calc(var(--site-header-height) + 12px); }
 .site-footer { border-top: 1px solid #ded4bf; background: #f3ecdd; }
 .site-footer-inner { min-height: 76px; flex-wrap: wrap; padding-block: 12px; font-size: 13px; }
 .site-footer small { margin-inline-start: auto; color: #52675d; }
+.atlas-site .site-header-inner { max-width: none; }
 .atlas-site > .sidebar, .atlas-site > .aside { inset-block-start: var(--site-header-height); }
 .atlas-site .main { min-height: calc(100vh - var(--site-header-height)); }
 .atlas-site .topbar { height: 46px; min-height: 46px; }
