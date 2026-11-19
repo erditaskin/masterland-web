@@ -53,5 +53,9 @@ policy = (
     + "; img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'none'"
 )
 output = Path(sys.argv[1])
-output.write_text('add_header Content-Security-Policy "' + policy + '" always;\n')
+output.write_text(
+    'add_header Content-Security-Policy "' + policy + '" always;\n'
+    # Keep Cloudflare from injecting a beacon that the static CSP would block.
+    'add_header Cache-Control "no-transform" always;\n'
+)
 print('Static CSP hashes generated:', len(assets.scripts), 'scripts,', len(assets.styles), 'styles,', len(assets.attributes), 'style attributes')
