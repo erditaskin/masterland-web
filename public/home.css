@@ -29,7 +29,7 @@
 
 .home-section { margin-top: 28px; }
 .home h2 { margin: 0 0 12px; font-size: clamp(27px, 3vw, 37px); }
-.home h3 { margin: 0; font-family: Georgia, serif; font-size: 21px; line-height: 1.15; }
+.home h3 { margin: 0; font-family: var(--site-font); font-size: 21px; line-height: 1.15; }
 .home-section p { margin: 6px 0 0; line-height: 1.5; font-size: 14px; }
 .home-screens { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 .home-screens article { display: grid; grid-template-columns: minmax(68px, .8fr) minmax(0, 1fr); align-items: center; gap: 13px; padding: 12px; background: #fffbf0; border: 1px solid #ded3bc; border-radius: 15px; }
